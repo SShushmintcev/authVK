@@ -1,2 +1,2 @@
 # authVK
-OAuth Vk and use api
+OAuth Vk and use is api with help .Net
