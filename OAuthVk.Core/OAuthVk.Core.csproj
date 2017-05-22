@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1E222FF4-7FF0-46FF-A37C-E0848FACAE77}</ProjectGuid>
+    <ProjectGuid>{92F24323-9A28-4C59-A2EB-9D033D6585AA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OAuthVk</RootNamespace>
-    <AssemblyName>OAuthVk</AssemblyName>
+    <RootNamespace>OAuthVk.Core</RootNamespace>
+    <AssemblyName>OAuthVk.Core</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,13 +40,53 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AuthVk.cs" />
+    <Compile Include="Enums\AccessSettings.cs" />
+    <Compile Include="Enums\AttitudeType.cs" />
+    <Compile Include="Enums\BlackList.cs" />
+    <Compile Include="Enums\FriendType.cs" />
+    <Compile Include="Enums\HumanTraitType.cs" />
+    <Compile Include="Enums\LifeMainType.cs" />
+    <Compile Include="Enums\MessageType.cs" />
+    <Compile Include="Enums\PlatformType.cs" />
+    <Compile Include="Enums\PoliticalType.cs" />
+    <Compile Include="Enums\SchoolType.cs" />
+    <Compile Include="Enums\SexType.cs" />
+    <Compile Include="Enums\UserAccessType.cs" />
+    <Compile Include="Enums\UserRelationType.cs" />
+    <Compile Include="FileType\IAudio.cs" />
+    <Compile Include="FileType\ICrop.cs" />
+    <Compile Include="FileType\IDocument.cs" />
+    <Compile Include="FileType\IGift.cs" />
+    <Compile Include="FileType\ILink.cs" />
+    <Compile Include="FileType\IMarket.cs" />
+    <Compile Include="FileType\IMarketAlbum.cs" />
+    <Compile Include="FileType\IPhoto.cs" />
+    <Compile Include="FileType\ISticker.cs" />
+    <Compile Include="FileType\IVideo.cs" />
+    <Compile Include="FileType\IWall.cs" />
+    <Compile Include="FileType\IWallReply.cs" />
+    <Compile Include="IAttachment.cs" />
+    <Compile Include="ICity.cs" />
+    <Compile Include="IContact.cs" />
+    <Compile Include="ICoordinates.cs" />
+    <Compile Include="ICounters.cs" />
+    <Compile Include="IGeo.cs" />
+    <Compile Include="IGroup.cs" />
+    <Compile Include="ILastVisit.cs" />
+    <Compile Include="IMessage.cs" />
+    <Compile Include="IMilitary.cs" />
+    <Compile Include="IOccupation.cs" />
+    <Compile Include="IPersonal.cs" />
+    <Compile Include="IPlace.cs" />
+    <Compile Include="IRelative.cs" />
+    <Compile Include="ISchool.cs" />
+    <Compile Include="ISize.cs" />
+    <Compile Include="IUniversity.cs" />
+    <Compile Include="IUser.cs" />
+    <Compile Include="IUserCompany.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Enums\" />
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

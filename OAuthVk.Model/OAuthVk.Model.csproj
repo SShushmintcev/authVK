@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1E222FF4-7FF0-46FF-A37C-E0848FACAE77}</ProjectGuid>
+    <ProjectGuid>{F145A666-CE33-4C62-B25D-04502ECF4431}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OAuthVk</RootNamespace>
-    <AssemblyName>OAuthVk</AssemblyName>
+    <RootNamespace>OAuthVk.Model</RootNamespace>
+    <AssemblyName>OAuthVk.Model</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,6 +30,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -40,12 +44,38 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AuthVk.cs" />
+    <Compile Include="City.cs" />
+    <Compile Include="Contact.cs" />
+    <Compile Include="Coordinates.cs" />
+    <Compile Include="Counters.cs" />
+    <Compile Include="Coverter\BoolConverter.cs" />
+    <Compile Include="FileType\Crop.cs" />
+    <Compile Include="FileType\Photo.cs" />
+    <Compile Include="FileType\Video.cs" />
+    <Compile Include="Geo.cs" />
+    <Compile Include="LastVisit.cs" />
+    <Compile Include="Message.cs" />
+    <Compile Include="Military.cs" />
+    <Compile Include="Occupation.cs" />
+    <Compile Include="Personal.cs" />
+    <Compile Include="Place.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Relative.cs" />
+    <Compile Include="Response.cs" />
+    <Compile Include="School.cs" />
+    <Compile Include="Size.cs" />
+    <Compile Include="University.cs" />
+    <Compile Include="User.cs" />
+    <Compile Include="UserCompany.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Enums\" />
-    <Folder Include="Model\" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OAuthVk.Core\OAuthVk.Core.csproj">
+      <Project>{92f24323-9a28-4c59-a2eb-9d033d6585aa}</Project>
+      <Name>OAuthVk.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
