@@ -1,53 +1,62 @@
-﻿using OAuthVk.Core.Enums;
+﻿using Newtonsoft.Json;
+using OAuthVk.Core;
+using OAuthVk.Core.Enums;
+using OAuthVk.Core.FileType;
 
-namespace OAuthVk.Core.FileType
+namespace OAuthVk.Model.FileType
 {
-  public interface IDocument
+  public class Document : IDocument
   {
     /// <summary>
     /// Идентификатор документа.
     /// </summary>
-    int Id { get; set; }
+    public int Id { get; set; }
 
     /// <summary>
     /// Идентификатор пользователя, загрузившего документ.
     /// </summary>
-    int OwnerId { get; set; }
+    [JsonProperty("owner_id")]
+    public int OwnerId { get; set; }
 
     /// <summary>
     /// Название документа.
     /// </summary>
-    string Title { get; set; }
+    public string Title { get; set; }
 
     /// <summary>
     /// Размер документа в байтах.
     /// </summary>
-    int Size { get; set; }
+    public int Size { get; set; }
 
     /// <summary>
     /// Расширение документа.
     /// </summary>
-    string Ext { get; set; }
+    public string Ext { get; set; }
 
     /// <summary>
-    /// Адрес документа, по которому его можно загрузить.
+    /// Url документа, по которому его можно загрузить.
     /// </summary>
-    string Url { get; set; }
+    public string Url { get; set; }
 
     /// <summary>
     /// Дата добавления в формате Unixtime.
     /// </summary>
-    int Date { get; set; }
+    public int Date { get; set; }
 
     /// <summary>
     /// Тип документа.
     /// </summary>
-    DocumentType Type { get; set; }
+    public DocumentType Type { get; set; }
 
     /// <summary>
     /// Информация для предварительного просмотра документа.
     /// </summary>
-    IPreview Preview { get; }
+    [JsonProperty]
+    public Preview Preview { get; set; }
 
+    /// <summary>
+    /// Информация для предварительного просмотра документа.
+    /// </summary>
+    IPreview IDocument.Preview => Preview;
   }
 }

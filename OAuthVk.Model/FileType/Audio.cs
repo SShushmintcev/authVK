@@ -1,81 +1,93 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using Newtonsoft.Json;
 using OAuthVk.Core.Enums;
+using OAuthVk.Core.FileType;
 
-namespace OAuthVk.Core.FileType
+namespace OAuthVk.Model.FileType
 {
-  public interface IAudio
+  [Serializable]
+  public class Audio : IAudio
   {
     /// <summary>
     /// Идентификатор аудиозаписи.
     /// </summary>
-    int Id { get; set; }
+    public int Id { get; set; }
 
     /// <summary>
     /// Идентификатор владельца аудиозаписи.
     /// </summary>
-    int OwnerId { get; set; }
+    [JsonProperty("owner_id")]
+    public int OwnerId { get; set; }
 
     /// <summary>
     /// Исполнитель.
     /// </summary>
-    string Artist {get;set;}
+    public string Artist { get; set; }
 
     /// <summary>
     /// Название композиции.
     /// </summary>
-    string Title {get;set;}
+    public string Title { get; set; }
 
     /// <summary>
     /// Длительность аудиозаписи в секундах.
     /// </summary>
-    int Duration { get; set; }
+    public int Duration { get; set; }
+
+    /// <summary>
+    /// Массив значений для визуального отображения звука.
+    /// </summary>
+    /// <remarks>Используется в медиавложении в личных сообщениях - тип Документ.</remarks>
+    [JsonProperty]
+    public List<int> Waveform { get; set; }
 
     /// <summary>
     /// Массив значений(integer) для визуального отображения звука.
     /// </summary>
     /// <remarks>Используется в медиавложении в личных сообщениях - тип Документ.</remarks>
-    IEnumerable<int> Waveform { get; }
+    IEnumerable<int> IAudio.Waveform => Waveform;
 
     /// <summary>
     /// URL .ogg-файла.
     /// </summary>
     /// <remarks>Используется в медиавложении в личных сообщениях - тип Документ.</remarks>
-    string OggUrl { get; set; }
+    [JsonProperty("link_ogg")]
+    public string OggUrl { get; set; }
 
     /// <summary>
     /// URL .mp3-файла.
     /// </summary>
     /// <remarks>Используется в медиавложении в личных сообщениях - тип Документ.</remarks>
-    string Mp3Url { get; set; }
+    [JsonProperty("link_mp3")]
+    public string Mp3Url { get; set; }
 
     /// <summary>
     /// Ссылка на mp3.
     /// </summary>
-    string Url {get;set;}
+    public string Url { get; set; }
 
     /// <summary>
     ///  Идентификатор текста аудиозаписи.
     /// </summary>
-    int? LyricsId { get; set; }
+    [JsonProperty("lyrics_id")]
+    public int? LyricsId { get; set; }
 
     /// <summary>
     /// Идентификатор альбома, в котором находится аудиозапись(если присвоен).
     /// </summary>
-    int AlbumId { get; set; }
+    [JsonProperty("album_id")]
+    public int AlbumId { get; set; }
 
     /// <summary>
     /// Тип жанра.
     /// </summary>
-    AudioGenreType GenreType { get; set; }
+    [JsonProperty("genre_id")]
+    public AudioGenreType GenreType { get; set; }
 
     /// <summary>
     /// Дата добавления.
     /// </summary>
-    int Date { get; set; }
-
-    ///// <summary>
-    ///// Истина если включена опция «Не выводить при поиске». Если опция отключена, поле не возвращается.
-    ///// </summary>
-    //bool no_search { get; set; }
+    public int Date { get; set; }
   }
 }

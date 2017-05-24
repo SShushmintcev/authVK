@@ -43,5 +43,16 @@ namespace OAuthVk.Model
     /// Название города.
     /// </summary>
     public string City { get; set; }
+
+    /*
+     * TODO: ?
+     * Если место добавлено как чекин в сообщество, объект place имеет дополнительные поля:
+     * type (integer) — тип чекина;
+     * group_id (integer) — идентификатор сообщества;
+     * group_photo (string) — URL миниатюры главной фотографии сообщества;
+     * checkins (integer) — количество чекинов;
+     * updated (integer) — время последнего чекина в Unixtime;
+     * address (integer) — адрес;
+     */
   }
 }

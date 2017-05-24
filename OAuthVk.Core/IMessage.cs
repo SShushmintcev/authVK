@@ -50,16 +50,15 @@ namespace OAuthVk.Core
     /// </summary>
     IGeo Geo { get; }
 
-
-
-    //attachments array медиавложения сообщения(фотографии, ссылки и т.п.). Описание массива attachments находится на отдельной странице.
-
-
+    /// <summary>
+    /// Медиавложения сообщения (фотографии, ссылки и т.п.).
+    /// </summary>
+    IEnumerable<IAttachment> Attachments { get; }
 
     /// <summary>
     /// Массив пересланных сообщений(если есть).
     /// </summary>
-    IEnumerable<string> FwdMessages { get; set; }
+    IEnumerable<string> FwdMessages { get; }
 
     /// <summary>
     /// Содержатся ли в сообщении emoji-смайлы.
@@ -91,7 +90,7 @@ namespace OAuthVk.Core
     /// <summary>
     /// Идентификаторы авторов последних сообщений беседы.
     /// </summary>
-    IEnumerable<int> ChatActive { get; set; }
+    IEnumerable<int> ChatActive { get; }
 
     /// <summary>
     /// Настройки уведомлений для беседы, если они есть.

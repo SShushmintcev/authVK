@@ -1,7 +1,10 @@
-﻿using OAuthVk.Core;
+﻿using System;
+using Newtonsoft.Json;
+using OAuthVk.Core;
 
 namespace OAuthVk.Model
 {
+  [Serializable]
   public class Geo : IGeo
   {
     /// <summary>
@@ -17,6 +20,12 @@ namespace OAuthVk.Model
     /// <summary>
     /// Описание места(если оно добавлено).
     /// </summary>
-    public IPlace Place { get; set; }
+    [JsonProperty]
+    public Place Place { get; set; }
+
+    /// <summary>
+    /// Описание места(если оно добавлено).
+    /// </summary>
+    IPlace IGeo.Place => Place;
   }
 }

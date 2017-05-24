@@ -15,6 +15,6 @@
     /// <summary>
     /// Описание места(если оно добавлено).
     /// </summary>
-    IPlace Place { get; set; }
+    IPlace Place { get; }
   }
 }

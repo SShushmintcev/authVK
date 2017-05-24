@@ -1,45 +1,55 @@
-﻿namespace OAuthVk.Core.FileType
+﻿using System;
+using Newtonsoft.Json;
+using OAuthVk.Core.FileType;
+
+namespace OAuthVk.Model.FileType
 {
-  public interface ISticker
+  [Serializable]
+  public class Sticker : ISticker
   {
     /// <summary>
     /// Идентификатор стикера.
     /// </summary>
-    int Id { get; set; }
+    public int Id { get; set; }
 
     /// <summary>
     /// Идентификатор набора.
     /// </summary>
-    int ProductId { get; set; }
+    [JsonProperty("product_id")]
+    public int ProductId { get; set; }
 
     /// <summary>
     /// URL изображения с высотой 64 px.
     /// </summary>
-    string Photo64 { get; set; }
+    [JsonProperty("photo_64")]
+    public string Photo64 { get; set; }
 
     /// <summary>
     /// URL изображения с высотой 128 px.
     /// </summary>
-    string Photo128 { get; set; }
+    [JsonProperty("photo_128")]
+    public string Photo128 { get; set; }
 
     /// <summary>
     /// URL изображения с высотой 256 px.
     /// </summary>
-    string Photo256 { get; set; }
+    [JsonProperty("photo_256")]
+    public string Photo256 { get; set; }
 
     /// <summary>
     /// URL изображения с высотой 352 px.
     /// </summary>
-    string Photo352 { get; set; }
+    [JsonProperty("photo_352")]
+    public string Photo352 { get; set; }
 
     /// <summary>
     /// Ширина в px.
     /// </summary>
-    int Width { get; set; }
+    public int Width { get; set; }
 
     /// <summary>
     /// Высота в px.
     /// </summary>
-    int Height { get; set; }
+    public int Height { get; set; }
   }
 }

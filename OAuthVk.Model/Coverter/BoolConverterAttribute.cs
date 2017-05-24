@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace OAuthVk.Model.Coverter
 {
-  public class BoolConverter : JsonConverter
+  public class BoolConverterAttribute : JsonConverter
   {
     public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
     {

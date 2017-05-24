@@ -1,40 +1,54 @@
-﻿namespace OAuthVk.Core.FileType
+﻿using System;
+using Newtonsoft.Json;
+using OAuthVk.Core;
+using OAuthVk.Core.FileType;
+
+namespace OAuthVk.Model.FileType
 {
-  public interface IWallReply
+  [Serializable]
+  public class WallReply : IWallReply
   {
     /// <summary>
     /// Идентификатор комментария.
     /// </summary>
-    int Id { get; set; }
+    public int Id { get; set; }
 
     /// <summary>
     /// Идентификатор автора комментария.
     /// </summary>
-    int FromId { get; set; }
+    [JsonProperty("from_id")]
+    public int FromId { get; set; }
 
     /// <summary>
     /// Дата создания комментария в формате Unixtime.
     /// </summary>
-    int Date { get; set; }
+    public int Date { get; set; }
 
     /// <summary>
     /// Текст комментария.
     /// </summary>
-    string Text { get; set; }
+    public string Text { get; set; }
 
     /// <summary>
     /// Идентификатор пользователя или сообщества, в ответ которому оставлен текущий комментарий (если применимо).
     /// </summary>
-    int? ReplyToUser { get; set; }
+    [JsonProperty("reply_to_user")]
+    public int? ReplyToUser { get; set; }
 
     /// <summary>
     /// Идентификатор комментария, в ответ на который оставлен текущий (если применимо).
     /// </summary>
-    int? ReplyToComment { get; set; }
+    [JsonProperty("reply_to_comment")]
+    public int? ReplyToComment { get; set; }
 
     /// <summary>
     /// Медиавложения комментария (фотографии, ссылки и т.п.).
     /// </summary>
-    IAttachment Attachments { get; }
+    public Attachment Attachments { get; set; }
+
+    /// <summary>
+    /// Медиавложения комментария (фотографии, ссылки и т.п.).
+    /// </summary>
+    IAttachment IWallReply.Attachments => Attachments;
   }
 }

@@ -13,7 +13,7 @@ namespace OAuthVk.Core
     /// <summary>
     /// Знание языков.
     /// </summary>
-    IEnumerable<string> Langs { get; set; }
+    IEnumerable<string> Langs { get; }
 
     /// <summary>
     /// Мировоззрение.

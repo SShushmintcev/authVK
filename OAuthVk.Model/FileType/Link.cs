@@ -1,57 +1,85 @@
-﻿namespace OAuthVk.Core.FileType
+﻿using System;
+using Newtonsoft.Json;
+using OAuthVk.Core;
+using OAuthVk.Core.FileType;
+
+namespace OAuthVk.Model.FileType
 {
-  public interface ILink
+  [Serializable]
+  public class Link : ILink
   {
     /// <summary>
     /// URL ссылки.
     /// </summary>
-    string Url { get; set; }
+    public string Url { get; set; }
 
     /// <summary>
     /// Заголовок ссылки.
     /// </summary>
-    string Title { get; set; }
+    public string Title { get; set; }
 
     /// <summary>
     /// Подпись ссылки(если имеется).
     /// </summary>
-    string Caption { get; set; }
+    public string Caption { get; set; }
 
     /// <summary>
     /// Описание ссылки.
     /// </summary>
-    string Description { get; set; }
+    public string Description { get; set; }
 
     /// <summary>
     /// Изображение превью, объект фотографии(если имеется).
     /// </summary>
-    IPhoto Photo { get; }
+    [JsonProperty]
+    public Photo Photo { get; set; }
+
+    /// <summary>
+    /// Изображение превью, объект фотографии(если имеется).
+    /// </summary>
+    IPhoto ILink.Photo => Photo;
 
     /// <summary>
     /// Является ли ссылка внешней.
     /// </summary>
-    bool IsExternal { get; set; }
+    [JsonProperty("is_external")]
+    public bool IsExternal { get; set; }
 
     /// <summary>
     /// Информация о продукте(если имеется).
     /// Поле возвращается для ссылок на магазины, например, Aliexpress.
     /// </summary>
-    IProduct Product { get; }
+    [JsonProperty]
+    public Product Product { get; set; }
+
+    /// <summary>
+    /// Информация о продукте(если имеется).
+    /// Поле возвращается для ссылок на магазины, например, Aliexpress.
+    /// </summary>
+    IProduct ILink.Product => Product;
 
     /// <summary>
     /// Информация о кнопке для перехода(если имеется).
     /// </summary>
-    IButtonInfo Button { get; }
+    [JsonProperty]
+    public ButtonInfo Button { get; set; }
+
+    /// <summary>
+    /// Информация о кнопке для перехода(если имеется).
+    /// </summary>
+    IButtonInfo ILink.Button => Button;
 
     /// <summary>
     /// Идентификатор вики-страницы с контентом для предпросмотра содержимого страницы.
     /// Возвращается в формате "owner_id_page_id".
     /// </summary>
-    string PreviewPage { get; set; }
+    [JsonProperty("preview_page")]
+    public string PreviewPage { get; set; }
 
     /// <summary>
     /// URL страницы с контентом для предпросмотра содержимого страницы.
     /// </summary>
-    string PreviewUrl { get; set; }
+    [JsonProperty("preview_url")]
+    public string PreviewUrl { get; set; }
   }
 }

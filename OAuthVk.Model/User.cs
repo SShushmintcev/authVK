@@ -12,6 +12,16 @@ namespace OAuthVk.Model
   [Serializable]
   public class User : IUser
   {
+    /// <summary>Initializes a new instance of the <see cref="T:System.Object" /> class.</summary>
+    public User()
+    {
+      Lists = new List<int>();
+      Relatives = new List<Relative>();
+      Schools = new List<School>();
+      Universities = new List<University>();
+      Work = new List<UserCompany>();
+    }
+
     /// <summary>
     /// Идентификатор пользователя.
     /// </summary>
@@ -294,14 +304,14 @@ namespace OAuthVk.Model
     /// Информация о том, известен ли номер мобильного телефона пользователя.
     /// </summary>
     [JsonProperty("has_mobile")]
-    [JsonConverter(typeof(BoolConverter))]
+    [JsonConverter(typeof(BoolConverterAttribute))]
     public bool HasMobile { get; set; }
 
     /// <summary>
     /// Информация о том, установил ли пользователь фотографию для профиля.
     /// </summary>
     [JsonProperty("has_photo")]
-    [JsonConverter(typeof(BoolConverter))]
+    [JsonConverter(typeof(BoolConverterAttribute))]
     public bool HasPhoto { get; set; }
 
     /// <summary>
@@ -319,21 +329,21 @@ namespace OAuthVk.Model
     /// Информация о том, есть ли пользователь в закладках у текущего пользователя.
     /// </summary>
     [JsonProperty("is_favorite")]
-    [JsonConverter(typeof(BoolConverter))]
+    [JsonConverter(typeof(BoolConverterAttribute))]
     public bool IsFavorite { get; set; }
 
     /// <summary>
     /// Информация о том, является ли пользователь другом текущего пользователя.
     /// </summary>
     [JsonProperty("is_friend")]
-    [JsonConverter(typeof(BoolConverter))]
+    [JsonConverter(typeof(BoolConverterAttribute))]
     public bool IsFriend { get; set; }
 
     /// <summary>
     /// Информация о том, скрыт ли пользователь из ленты новостей текущего пользователя.
     /// </summary>
     [JsonProperty("is_hidden_from_feed")]
-    [JsonConverter(typeof(BoolConverter))]
+    [JsonConverter(typeof(BoolConverterAttribute))]
     public bool IsHiddenFromFeed { get; set; }
 
     /// <summary>
@@ -424,7 +434,7 @@ namespace OAuthVk.Model
     /// содержащее 1. При этом, если используется именно приложение, дополнительно 
     /// возвращается поле online_app, содержащее его идентификатор.</remarks>
     /// TODO:
-    [JsonConverter(typeof(BoolConverter))]
+    [JsonConverter(typeof(BoolConverterAttribute))]
     public bool Online { get; set; }
 
     /// <summary>
@@ -594,14 +604,14 @@ namespace OAuthVk.Model
     /// <summary>
     /// Признак верификации страницы пользователя.
     /// </summary>
-    [JsonConverter(typeof(BoolConverter))]
+    [JsonConverter(typeof(BoolConverterAttribute))]
     public bool Verified { get; set; }
 
     /// <summary>
     /// Признак включенности комментариев на стене.
     /// </summary>
     [JsonProperty("wall_comments")]
-    [JsonConverter(typeof(BoolConverter))]
+    [JsonConverter(typeof(BoolConverterAttribute))]
     public bool WallComments { get; set; }
 
     #endregion

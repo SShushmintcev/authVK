@@ -7,6 +7,14 @@ namespace OAuthVk.Model
 {
   public class Message : IMessage
   {
+    /// <summary>Initializes a new instance of the <see cref="T:System.Object" /> class.</summary>
+    public Message()
+    {
+      Attachments = new List<Attachment>();
+      FwdMessages = new List<string>();
+      ChatActive = new List<int>();
+    }
+
     /// <summary>
     /// Идентификатор сообщения (не возвращается для пересланных сообщений).
     /// </summary>
@@ -63,10 +71,26 @@ namespace OAuthVk.Model
     IGeo IMessage.Geo => Geo;
 
     /// <summary>
+    /// Медиавложения сообщения (фотографии, ссылки и т.п.).
+    /// </summary>
+    [JsonProperty]
+    public List<Attachment> Attachments { get; set; }
+
+    /// <summary>
+    /// Медиавложения сообщения (фотографии, ссылки и т.п.).
+    /// </summary>
+    IEnumerable<IAttachment> IMessage.Attachments => Attachments;
+
+    /// <summary>
     /// Массив пересланных сообщений(если есть).
     /// </summary>
     [JsonProperty("fwd_messages")]
-    public IEnumerable<string> FwdMessages { get; set; }
+    public List<string> FwdMessages { get; set; }
+
+    /// <summary>
+    /// Массив пересланных сообщений(если есть).
+    /// </summary>
+    IEnumerable<string> IMessage.FwdMessages => FwdMessages;
 
     /// <summary>
     /// Содержатся ли в сообщении emoji-смайлы.
@@ -102,7 +126,12 @@ namespace OAuthVk.Model
     /// Идентификаторы авторов последних сообщений беседы.
     /// </summary>
     [JsonProperty("chat_active")]
-    public IEnumerable<int> ChatActive { get; set; }
+    public List<int> ChatActive { get; set; }
+
+    /// <summary>
+    /// Идентификаторы авторов последних сообщений беседы.
+    /// </summary>
+    IEnumerable<int> IMessage.ChatActive => ChatActive;
 
     /// <summary>
     /// Настройки уведомлений для беседы, если они есть.

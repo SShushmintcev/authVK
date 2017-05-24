@@ -9,6 +9,12 @@ namespace OAuthVk.Model
   [Serializable]
   public class Personal : IPersonal
   {
+    /// <summary>Initializes a new instance of the <see cref="T:System.Object" /> class.</summary>
+    public Personal()
+    {
+      Langs = new List<string>();
+    }
+
     /// <summary>
     /// Политические предпочтения.
     /// </summary>
@@ -17,7 +23,13 @@ namespace OAuthVk.Model
     /// <summary>
     /// Знание языков.
     /// </summary>
-    public IEnumerable<string> Langs { get; set; }
+    [JsonProperty]
+    public List<string> Langs { get; set; }
+
+    /// <summary>
+    /// Знание языков.
+    /// </summary>
+    IEnumerable<string> IPersonal.Langs => Langs;
 
     /// <summary>
     /// Мировоззрение.
