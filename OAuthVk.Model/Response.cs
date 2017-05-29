@@ -2,16 +2,16 @@
 
 namespace OAuthVk.Model
 {
-  public class Result
+  public class Result<T>
   {
-    public Response Response { get; set; }
+    public Response<T> Response { get; set; }
     //public List<User> Response { get; set; }
   }
 
-  public class Response
+  public class Response<T>
   {
     public int Count { get; set; }
 
-    public List<User> Items { get; set; }
+    public List<T> Items { get; set; }
   }
 }

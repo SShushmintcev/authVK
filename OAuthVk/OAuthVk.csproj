@@ -34,6 +34,10 @@
       <HintPath>..\packages\AngleSharp.0.9.9\lib\net45\AngleSharp.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -45,12 +49,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AuthVk.cs" />
+    <Compile Include="DataContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OAuthVk.Core\OAuthVk.Core.csproj">
       <Project>{92F24323-9A28-4C59-A2EB-9D033D6585AA}</Project>
       <Name>OAuthVk.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OAuthVk.Model\OAuthVk.Model.csproj">
+      <Project>{F145A666-CE33-4C62-B25D-04502ECF4431}</Project>
+      <Name>OAuthVk.Model</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

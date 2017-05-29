@@ -55,6 +55,7 @@
     <Compile Include="Counters.cs" />
     <Compile Include="CountInfo.cs" />
     <Compile Include="Coverter\BoolConverterAttribute.cs" />
+    <Compile Include="DataModelRequest.cs" />
     <Compile Include="FileType\Audio.cs" />
     <Compile Include="FileType\Crop.cs" />
     <Compile Include="FileType\Document.cs" />

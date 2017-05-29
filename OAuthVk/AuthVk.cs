@@ -4,7 +4,6 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
-using System.Text;
 using System.Threading.Tasks;
 using AngleSharp.Dom;
 using AngleSharp.Parser.Html;
@@ -34,29 +33,29 @@ namespace OAuthVk
     /// </summary>
     private readonly string _redirectUrl;
 
-    private string _accessToken = null;
-    private int _expireToken = 0; // Указывается в секундах
-    private int _userId = 0;
+    /// <summary>
+    /// Hash авторизации.
+    /// </summary>
+    private string _qHash;
 
     /// <summary>
     /// Initializes a new instance of the <see cref="AuthVk" /> class.
     /// </summary>
     public AuthVk(int appId, string redirectUrl = null)
     {
-      if (!String.IsNullOrEmpty(redirectUrl))
-      {
-        _redirectUrl = "https://oauth.vk.com/blank.html";
-      }
+      _redirectUrl = string.IsNullOrEmpty(redirectUrl) ? "https://oauth.vk.com/blank.html" : redirectUrl;
 
       _appId = appId;
       _redirectUrl = redirectUrl;
     }
 
-    public async Task Authorize(AccessSettings accessSettings, string email, string pass)
+    public async Task<DataContext> AuthorizeAsync(AccessSettings accessSettings, string email, string pass)
     {
       var cookie = new CookieContainer();
 
-      var requestUri = new Uri($"{DefaultAuthorizeUrl}?client_id={_appId}&redirect_uri={_redirectUrl}&scope={accessSettings}&response_type=token&v={Version}");
+      //TODO: [new] Теперь надо понять, как предавать scope ALL, а не переводить его в число. 
+      //TODO: [new] если он Криво читает scope, на данном этапе вернется минимальный доступ.
+      var requestUri = new Uri($"{DefaultAuthorizeUrl}?client_id={_appId}&redirect_uri={_redirectUrl}&scope={(int)accessSettings}&response_type=token&v={Version}");
 
       var httpMessageHandler = new HttpClientHandler
       {
@@ -67,9 +66,9 @@ namespace OAuthVk
 
       using (HttpClient httpClient = new HttpClient(httpMessageHandler))
       {
-        httpClient.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)");
-        httpClient.DefaultRequestHeaders.Accept.Clear();
-        httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("text/html"));
+        //httpClient.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)");
+        //httpClient.DefaultRequestHeaders.Accept.Clear();
+        //httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("text/html"));
 
         HttpResponseMessage response = await httpClient.GetAsync(requestUri);
 
@@ -86,42 +85,35 @@ namespace OAuthVk
         formUrlClient.Headers.ContentType = new MediaTypeHeaderValue("application/x-www-form-urlencoded");
 
         response = await httpClient.PostAsync(new Uri(form.Action), formUrlClient);
-        //var result = await response.Content.ReadAsStringAsync();
+        var accessUrl = response.RequestMessage.RequestUri;
 
-        LoadAccessToken(response.RequestMessage.RequestUri);
+        if (IsHash(response.RequestMessage.RequestUri))
+        {
+          var result = await response.Content.ReadAsStringAsync();
+          var accessHtml = parser.Parse(result);
+          form = accessHtml.Forms.FirstOrDefault();
+
+          dictionary = new Dictionary<string, string>
+          {
+            {"email_denied", "0"}
+          };
+
+          formUrlClient = new FormUrlEncodedContent(dictionary);
+          formUrlClient.Headers.ContentType = new MediaTypeHeaderValue("application/x-www-form-urlencoded");
+
+          response = await httpClient.PostAsync(new Uri(form.Action), formUrlClient);
+          accessUrl = response.RequestMessage.RequestUri;
+        }
+
+        var dc = new DataContext(accessUrl, _qHash);
 
         response.Dispose();
+
+        return dc;
       }
     }
 
     #region Вспомогательные методы
-
-    /// <summary>
-    /// Парсит токен авторизации из ответа сервера.
-    /// </summary>
-    /// <param name="uri">Url у котором содержится токен.</param>
-    private void LoadAccessToken(Uri uri)
-    {
-      uri.Fragment.Substring(1).Split('&').ToList().ForEach(i =>
-      {
-        var str = i.Split('=');
-
-        if (str[0] == "access_token")
-        {
-          _accessToken = str[1];
-        }
-
-        if (str[0] == "expires_in")
-        {
-          _expireToken = Convert.ToInt32(str[1]);
-        }
-
-        if (str[0] == "user_id")
-        {
-          _userId = Convert.ToInt32(str[1]);
-        }
-      });
-    }
 
     /// <summary>
     /// Формирует список полей для формы запроса.
@@ -150,6 +142,29 @@ namespace OAuthVk
       }
 
       return dictionary;
+    }
+
+    /// <summary>
+    /// Проверяет признак того, что требуется получение у авторизации на запрошенные приложением действия.
+    /// Если данного признака нет, то это означает, что приложению разрешен минимальный доступ.
+    /// </summary>
+    /// <param name="uri">Url в котором содержится hash.</param>
+    /// <returns>Признак того, что запрошены расширенные права приложения.</returns>
+    private bool IsHash(Uri uri)
+    {
+      var urlParams = string.IsNullOrEmpty(uri.Query) ? uri.Fragment : uri.Query;
+
+      urlParams.Substring(1).Split('&').ToList().ForEach(i =>
+      {
+        var str = i.Split('=');
+
+        if (str[0] == "__q_hash")
+        {
+          _qHash = str[1];
+        }
+      });
+
+      return !string.IsNullOrEmpty(_qHash);
     }
 
     #endregion

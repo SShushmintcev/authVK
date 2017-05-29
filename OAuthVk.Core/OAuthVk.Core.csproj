@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataProvider\IMessageProvider.cs" />
+    <Compile Include="DataProvider\IFriendProvider.cs" />
     <Compile Include="Enums\AccessSettings.cs" />
     <Compile Include="Enums\AttitudeType.cs" />
     <Compile Include="Enums\AudioGenreType.cs" />
@@ -76,6 +78,7 @@
     <Compile Include="ICoordinates.cs" />
     <Compile Include="ICount.cs" />
     <Compile Include="ICounters.cs" />
+    <Compile Include="IDataModelRequest.cs" />
     <Compile Include="IGeo.cs" />
     <Compile Include="IGroup.cs" />
     <Compile Include="ILastVisit.cs" />
@@ -100,7 +103,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="IComments.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
