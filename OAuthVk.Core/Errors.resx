@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ER1" xml:space="preserve">
+    <value>Произошла неизвестная ошибка.</value>
+  </data>
+  <data name="ER10" xml:space="preserve">
+    <value>Произошла внутренняя ошибка сервера.</value>
+  </data>
+  <data name="ER100" xml:space="preserve">
+    <value>Один из необходимых параметров был не передан или неверен.</value>
+  </data>
+  <data name="ER1000" xml:space="preserve">
+    <value>Недопустимый номер телефона.</value>
+  </data>
+  <data name="ER1004" xml:space="preserve">
+    <value>Номер телефона занят другим пользователем.</value>
+  </data>
+  <data name="ER101" xml:space="preserve">
+    <value>Неверный API ID приложения.</value>
+  </data>
+  <data name="ER11" xml:space="preserve">
+    <value>В тестовом режиме приложение должно быть выключено или пользователь должен быть залогинен.</value>
+  </data>
+  <data name="ER1105" xml:space="preserve">
+    <value>Превышено ограничение на число попыток, попробуйте позже.</value>
+  </data>
+  <data name="ER1110" xml:space="preserve">
+    <value>Неправильный код.</value>
+  </data>
+  <data name="ER1111" xml:space="preserve">
+    <value>Недопустимый пароль.</value>
+  </data>
+  <data name="ER1112" xml:space="preserve">
+    <value>Обработка... Попробуйте позже.</value>
+  </data>
+  <data name="ER113" xml:space="preserve">
+    <value>Неверный идентификатор пользователя.</value>
+  </data>
+  <data name="ER1260" xml:space="preserve">
+    <value>Недопустимое короткое имя страницы.</value>
+  </data>
+  <data name="ER14" xml:space="preserve">
+    <value>Требуется ввод кода с картинки (Captcha).</value>
+  </data>
+  <data name="ER15" xml:space="preserve">
+    <value>Доступ запрещён.</value>
+  </data>
+  <data name="ER150" xml:space="preserve">
+    <value>Неверный timestamp. </value>
+  </data>
+  <data name="ER16" xml:space="preserve">
+    <value>Требуется выполнение запросов по протоколу HTTPS, т.к. пользователь включил настройку, требующую работу через безопасное соединение.</value>
+  </data>
+  <data name="ER17" xml:space="preserve">
+    <value>Требуется валидация пользователя.</value>
+  </data>
+  <data name="ER18" xml:space="preserve">
+    <value>Страница удалена или заблокирована.</value>
+  </data>
+  <data name="ER2" xml:space="preserve">
+    <value>Приложение выключено.</value>
+  </data>
+  <data name="ER20" xml:space="preserve">
+    <value>Данное действие запрещено для не Standalone приложений.</value>
+  </data>
+  <data name="ER200" xml:space="preserve">
+    <value>Доступ к альбому запрещён. Убедитесь, что Вы используете верные идентификаторы.</value>
+  </data>
+  <data name="ER201" xml:space="preserve">
+    <value>Доступ к аудио запрещён. Убедитесь, что Вы используете верные идентификаторы.</value>
+  </data>
+  <data name="ER203" xml:space="preserve">
+    <value>Доступ к группе запрещён.
+(Убедитесь, что текущий пользователь является участником или руководителем сообщества (для закрытых и частных групп и встреч))</value>
+  </data>
+  <data name="ER21" xml:space="preserve">
+    <value>Данное действие разрешено только для Standalone и Open API приложений.</value>
+  </data>
+  <data name="ER23" xml:space="preserve">
+    <value>Метод был выключен.</value>
+  </data>
+  <data name="ER24" xml:space="preserve">
+    <value>Требуется подтверждение со стороны пользователя.</value>
+  </data>
+  <data name="ER27" xml:space="preserve">
+    <value>Ключ доступа сообщества недействителен.</value>
+  </data>
+  <data name="ER28" xml:space="preserve">
+    <value>Ключ доступа приложения недействителен.</value>
+  </data>
+  <data name="ER3" xml:space="preserve">
+    <value>Передан неизвестный метод.</value>
+  </data>
+  <data name="ER300" xml:space="preserve">
+    <value>Альбом переполнен. (Перед продолжением работы нужно удалить лишние объекты из альбома или использовать другой альбом.)</value>
+  </data>
+  <data name="ER4" xml:space="preserve">
+    <value>Неверная подпись.</value>
+  </data>
+  <data name="ER5" xml:space="preserve">
+    <value>Авторизация пользователя не удалась.</value>
+  </data>
+  <data name="ER500" xml:space="preserve">
+    <value>Действие запрещено. Вы должны включить переводы голосов в настройках приложения. (Проверьте настройки приложения: https://vk.com/editapp?id={0}&amp;section=payments)</value>
+  </data>
+  <data name="ER6" xml:space="preserve">
+    <value>Слишком много запросов в секунду.</value>
+  </data>
+  <data name="ER600" xml:space="preserve">
+    <value>Нет прав на выполнение данных операций с рекламным кабинетом.</value>
+  </data>
+  <data name="ER603" xml:space="preserve">
+    <value>Произошла ошибка при работе с рекламным кабинетом.</value>
+  </data>
+  <data name="ER7" xml:space="preserve">
+    <value>Нет прав для выполнения этого действия.</value>
+  </data>
+  <data name="ER8" xml:space="preserve">
+    <value>Неверный запрос.</value>
+  </data>
+  <data name="ER9" xml:space="preserve">
+    <value>Слишком много однотипных действий.</value>
+  </data>
+</root>

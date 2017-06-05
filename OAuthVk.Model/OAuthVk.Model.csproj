@@ -44,10 +44,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Accessor\AccountAccessor.cs" />
+    <Compile Include="Accessor\AdminAccessor.cs" />
+    <Compile Include="Accessor\BaseAccessor.cs" />
+    <Compile Include="Accessor\FriendAccessor.cs" />
+    <Compile Include="Accessor\MessageAccessor.cs" />
+    <Compile Include="Accessor\UserAccessor.cs" />
+    <Compile Include="Account.cs" />
+    <Compile Include="AccountPushSettings.cs" />
     <Compile Include="Action.cs" />
+    <Compile Include="Answer.cs" />
     <Compile Include="Attachment.cs" />
     <Compile Include="ButtonInfo.cs" />
     <Compile Include="Category.cs" />
+    <Compile Include="Chat.cs" />
     <Compile Include="City.cs" />
     <Compile Include="Comments.cs" />
     <Compile Include="Contact.cs" />
@@ -56,6 +66,8 @@
     <Compile Include="CountInfo.cs" />
     <Compile Include="Coverter\BoolConverterAttribute.cs" />
     <Compile Include="DataModelRequest.cs" />
+    <Compile Include="Dialog.cs" />
+    <Compile Include="Error.cs" />
     <Compile Include="FileType\Audio.cs" />
     <Compile Include="FileType\Crop.cs" />
     <Compile Include="FileType\Document.cs" />
@@ -63,27 +75,45 @@
     <Compile Include="FileType\Link.cs" />
     <Compile Include="FileType\Market.cs" />
     <Compile Include="FileType\MarketAlbum.cs" />
+    <Compile Include="FileType\Note.cs" />
+    <Compile Include="FileType\Page.cs" />
     <Compile Include="FileType\Photo.cs" />
+    <Compile Include="FileType\Poll.cs" />
     <Compile Include="FileType\Sticker.cs" />
     <Compile Include="FileType\Video.cs" />
     <Compile Include="FileType\Wall.cs" />
     <Compile Include="FileType\WallReply.cs" />
+    <Compile Include="Filter\AccountPushFilter.cs" />
+    <Compile Include="Filter\AccountPushSettingsFilter.cs" />
+    <Compile Include="Filter\ChatFilter.cs" />
+    <Compile Include="Filter\ContactsFilter.cs" />
+    <Compile Include="Filter\CurrentAccountInfoFilter.cs" />
+    <Compile Include="Filter\DialogFilter.cs" />
+    <Compile Include="Filter\DeviceFilter.cs" />
+    <Compile Include="Filter\PasswordFilter.cs" />
+    <Compile Include="Filter\ProfileInfoFilter.cs" />
     <Compile Include="Geo.cs" />
     <Compile Include="LastVisit.cs" />
     <Compile Include="Like.cs" />
+    <Compile Include="LookupUser.cs" />
     <Compile Include="Message.cs" />
     <Compile Include="Military.cs" />
     <Compile Include="Occupation.cs" />
+    <Compile Include="Offer.cs" />
     <Compile Include="Personal.cs" />
     <Compile Include="Place.cs" />
     <Compile Include="PostSource.cs" />
     <Compile Include="Preview.cs" />
     <Compile Include="Price.cs" />
     <Compile Include="Product.cs" />
+    <Compile Include="Profile.cs" />
+    <Compile Include="ProfileChangeResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ChatPushSettings.cs" />
+    <Compile Include="PushNotification.cs" />
     <Compile Include="Relative.cs" />
     <Compile Include="Repost.cs" />
-    <Compile Include="Response.cs" />
+    <Compile Include="ListModel.cs" />
     <Compile Include="School.cs" />
     <Compile Include="Size.cs" />
     <Compile Include="University.cs" />
@@ -99,6 +129,7 @@
       <Name>OAuthVk.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

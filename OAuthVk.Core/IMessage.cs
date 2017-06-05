@@ -18,7 +18,7 @@ namespace OAuthVk.Core
     /// <summary>
     /// Идентификатор автора сообщения. положительное число.
     /// </summary>
-    int FromId { get; set; }
+    int? FromId { get; set; }
 
     /// <summary>
     /// Дата отправки сообщения в формате Unixtime.
@@ -85,7 +85,7 @@ namespace OAuthVk.Core
     /// <summary>
     /// Идентификатор беседы.
     /// </summary>
-    int ChatId { get; set; }
+    int? ChatId { get; set; }
 
     /// <summary>
     /// Идентификаторы авторов последних сообщений беседы.
@@ -101,12 +101,12 @@ namespace OAuthVk.Core
     /// <summary>
     /// Количество участников беседы.
     /// </summary>
-    int UsersCount { get; set; }
+    int? UsersCount { get; set; }
 
     /// <summary>
     /// Идентификатор создателя беседы.
     /// </summary>
-    int AdminId { get; set; }
+    int? AdminId { get; set; }
 
     /// <summary>
     /// Тип действия (если это служебное сообщение).

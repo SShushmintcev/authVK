@@ -4,22 +4,12 @@ using OAuthVk.Core.FileType;
 
 namespace OAuthVk.Core
 {
-  public interface IUser
+  public interface IUser : IProfile, IOtherLookup
   {
     /// <summary>
     /// Идентификатор пользователя.
     /// </summary>
     long Id { get; set; }
-
-    /// <summary>
-    /// Имя.
-    /// </summary>
-    string FirstName { get; set; }
-
-    /// <summary>
-    /// Фамилия.
-    /// </summary>
-    string LastName { get; set; }
 
     /// <summary>
     /// Поле возвращается, если страница пользователя удалена или заблокирована,
@@ -45,13 +35,6 @@ namespace OAuthVk.Core
     /// Деятельность
     /// </summary>
     string Activities { get; set; }
-
-    /// <summary>
-    /// Дата рождения.
-    /// Возвращается в формате D.M.YYYY или D.M (если год рождения скрыт). 
-    /// Если дата рождения скрыта целиком, поле отсутствует в ответе.
-    /// </summary>
-    string Bdate { get; set; }
 
     /// <summary>
     /// Информация о том, находится ли текущий пользователь в черном списке.
@@ -99,16 +82,6 @@ namespace OAuthVk.Core
     IEnumerable<IUserCompany> Work { get; }
 
     /// <summary>
-    /// Информация о городе, указанном на странице пользователя в разделе «Контакты».
-    /// </summary>
-    ICity City { get; }
-
-    /// <summary>
-    /// Количество общих друзей с текущим пользователем.
-    /// </summary>
-    int CommonCount { get; set; }
-
-    /// <summary>
     /// Возвращает данные об указанных в профиле сервисах пользователя, 
     /// таких как: skype, facebook, twitter, livejournal, instagram.
     /// </summary>
@@ -138,6 +111,15 @@ namespace OAuthVk.Core
     /// </summary>
     string Instagram { get; set; }
 
+    #region For LookupContacts
+
+    /// <summary>
+    /// Запрос на добавление в друзья уже был выслан, либо пользователь уже является другом.
+    /// </summary>
+    bool RequestSent { get; set; }
+
+    #endregion
+
     /// <summary>
     /// Информация о телефонных номерах пользователя.
     /// Если данные указаны и не скрыты настройками приватности.
@@ -149,11 +131,6 @@ namespace OAuthVk.Core
     /// Возвращается только в методе users.get c передачей access_token.
     /// </summary>
     ICounters Counters { get; }
-
-    /// <summary>
-    /// Информация о стране, указанной на странице пользователя в разделе «Контакты».
-    /// </summary>
-    ICity Country { get; }
 
     /// <summary>
     /// Возвращает данные о точках, по которым вырезаны профильная и миниатюрная фотографии пользователя.
@@ -230,11 +207,6 @@ namespace OAuthVk.Core
     bool HasPhoto { get; set; }
 
     /// <summary>
-    /// Название родного города.
-    /// </summary>
-    string Hometown { get; set; }
-
-    /// <summary>
     /// Содержимое поля «Интересы» из профиля.
     /// </summary>
     string Interests { get; set; }
@@ -254,6 +226,12 @@ namespace OAuthVk.Core
     /// </summary>
     bool IsHiddenFromFeed { get; set; }
 
+    /// <summary>
+    /// Идентификатор пользователя, пригласившего в беседу.
+    /// </summary>
+    /// <remarks>Опционально. Используется, когда получаем данные беседы.</remarks>
+    int? InvitedBy { get; set; }
+
     //last_name_{case} фамилия в заданном падеже.
 
     /// <summary>
@@ -269,11 +247,6 @@ namespace OAuthVk.Core
     #endregion
 
     #region Optional------- M-W
-
-    /// <summary>
-    /// Девичья фамилия.
-    /// </summary>
-    string MaidenName { get; set; }
 
     /// <summary>
     /// Информация о военной службе пользователя.
@@ -376,41 +349,14 @@ namespace OAuthVk.Core
     IEnumerable<IRelative> Relatives { get; }
 
     /// <summary>
-    /// Семейное положение пользователя.
-    /// </summary>
-    /// <remarks>Если в семейном положении указан другой пользователь, 
-    /// дополнительно возвращается объект relation_partner, содержащий id и имя этого человека.</remarks>
-    /// TODO:
-    UserRelationType MaritalType { get; set; }
-
-    /// <summary>
     /// Список школ, в которых учился пользователь.
     /// </summary>
     IEnumerable<ISchool> Schools { get; }
 
     /// <summary>
-    /// Короткое имя страницы пользователя.
-    /// </summary>
-    string ScreenName { get; set; }
-
-    /// <summary>
-    /// Пол пользователя. 
-    /// </summary>
-    SexType Sex { get; set; }
-
-    /// <summary>
     /// Адрес сайта, указанный в профиле сайт пользователя.
     /// </summary>
     string Site { get; set; }
-
-    /// <summary>
-    /// Статус пользователя.
-    /// Возвращается строка, содержащая текст статуса, расположенного в профиле под именем пользователя.
-    /// </summary>
-    /// <remarks>Если у пользователя включена опция «Транслировать в статус играющую музыку», 
-    /// будет возвращено дополнительное поле status_audio, содержащее информацию о транслируемой композиции. </remarks>
-    /// TODO: 
-    string Status { get; set; }
 
     /// <summary>
     /// Временная зона пользователя.

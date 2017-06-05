@@ -30,7 +30,7 @@ namespace OAuthVk.Model
     /// Идентификатор автора сообщения. положительное число.
     /// </summary>
     [JsonProperty("from_id")]
-    public int FromId { get; set; }
+    public int? FromId { get; set; }
 
     /// <summary>
     /// Дата отправки сообщения в формате Unixtime.
@@ -120,7 +120,7 @@ namespace OAuthVk.Model
     /// Идентификатор беседы.
     /// </summary>
     [JsonProperty("chat_id")]
-    public int ChatId { get; set; }
+    public int? ChatId { get; set; }
 
     /// <summary>
     /// Идентификаторы авторов последних сообщений беседы.
@@ -144,13 +144,13 @@ namespace OAuthVk.Model
     /// Количество участников беседы.
     /// </summary>
     [JsonProperty("users_count")]
-    public int UsersCount { get; set; }
+    public int? UsersCount { get; set; }
 
     /// <summary>
     /// Идентификатор создателя беседы.
     /// </summary>
     [JsonProperty("admin_id")]
-    public int AdminId { get; set; }
+    public int? AdminId { get; set; }
 
     /// <summary>
     /// Тип действия (если это служебное сообщение).

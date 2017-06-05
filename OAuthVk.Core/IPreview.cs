@@ -19,5 +19,7 @@ namespace OAuthVk.Core
     /// Данные об аудиосообщении.
     /// </summary>
     IAudio AudioMsg { get; }
+
+    //TODO: Существует еще один объект Video. Который не описан в VK
   }
 }

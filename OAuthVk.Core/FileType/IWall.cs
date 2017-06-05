@@ -81,7 +81,7 @@ namespace OAuthVk.Core.FileType
     /// Поле возвращается только для Standalone-приложений с ключом доступа, полученным в Implicit Flow.
     /// Информация о способе размещения записи.
     /// </summary>
-    IEnumerable<IPostSource> PostSource { get; }
+    IPostSource PostSource { get; }
 
     /// <summary>
     /// Медиавложения записи (фотографии, ссылки и т.п.).

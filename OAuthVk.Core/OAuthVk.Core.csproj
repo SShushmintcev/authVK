@@ -43,6 +43,7 @@
     <Compile Include="DataProvider\IMessageProvider.cs" />
     <Compile Include="DataProvider\IFriendProvider.cs" />
     <Compile Include="Enums\AccessSettings.cs" />
+    <Compile Include="Enums\AccessViewType.cs" />
     <Compile Include="Enums\AttitudeType.cs" />
     <Compile Include="Enums\AudioGenreType.cs" />
     <Compile Include="Enums\AvailabilityProductType.cs" />
@@ -50,49 +51,84 @@
     <Compile Include="Enums\DocumentType.cs" />
     <Compile Include="Enums\FriendType.cs" />
     <Compile Include="Enums\HumanTraitType.cs" />
+    <Compile Include="Enums\LangType.cs" />
     <Compile Include="Enums\LifeMainType.cs" />
     <Compile Include="Enums\MessageType.cs" />
     <Compile Include="Enums\PlatformType.cs" />
     <Compile Include="Enums\PoliticalType.cs" />
+    <Compile Include="Enums\RequestStatus.cs" />
     <Compile Include="Enums\SchoolType.cs" />
     <Compile Include="Enums\SexType.cs" />
     <Compile Include="Enums\UserAccessType.cs" />
     <Compile Include="Enums\UserRelationType.cs" />
+    <Compile Include="Enums\VisibilityDateType.cs" />
+    <Compile Include="Errors.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Errors.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Exception\ExceptionHelper.cs" />
+    <Compile Include="Exception\RequestException.cs" />
     <Compile Include="FileType\IAudio.cs" />
     <Compile Include="FileType\ICrop.cs" />
     <Compile Include="FileType\IDocument.cs" />
     <Compile Include="FileType\IGift.cs" />
     <Compile Include="FileType\IMarket.cs" />
     <Compile Include="FileType\IMarketAlbum.cs" />
+    <Compile Include="FileType\INote.cs" />
+    <Compile Include="FileType\IPage.cs" />
     <Compile Include="FileType\IPhoto.cs" />
+    <Compile Include="FileType\IPoll.cs" />
     <Compile Include="FileType\ISticker.cs" />
     <Compile Include="FileType\IVideo.cs" />
     <Compile Include="FileType\IWall.cs" />
     <Compile Include="FileType\IWallReply.cs" />
+    <Compile Include="Filters\IAccountPushSettingsFilter.cs" />
+    <Compile Include="Filters\IChatFilter.cs" />
+    <Compile Include="Filters\IContactsFilter.cs" />
+    <Compile Include="Filters\ICurrentAccountInfoFilter.cs" />
+    <Compile Include="Filters\IDeviceFilter.cs" />
+    <Compile Include="Filters\IDialogFilter.cs" />
+    <Compile Include="Filters\IPasswordFilter.cs" />
+    <Compile Include="Filters\IProfileInfoFilter.cs" />
+    <Compile Include="Helpers.cs" />
+    <Compile Include="IAccount.cs" />
+    <Compile Include="Filters\IAccountPushFilter.cs" />
+    <Compile Include="IAccountPushSettings.cs" />
     <Compile Include="IAction.cs" />
+    <Compile Include="IAnswer.cs" />
     <Compile Include="IAttachment.cs" />
     <Compile Include="IButtonInfo.cs" />
     <Compile Include="ICategory.cs" />
+    <Compile Include="IChat.cs" />
     <Compile Include="ICity.cs" />
     <Compile Include="IContact.cs" />
     <Compile Include="ICoordinates.cs" />
     <Compile Include="ICount.cs" />
     <Compile Include="ICounters.cs" />
     <Compile Include="IDataModelRequest.cs" />
+    <Compile Include="IDialog.cs" />
     <Compile Include="IGeo.cs" />
     <Compile Include="IGroup.cs" />
     <Compile Include="ILastVisit.cs" />
     <Compile Include="FileType\ILink.cs" />
     <Compile Include="ILike.cs" />
+    <Compile Include="IListModel.cs" />
+    <Compile Include="ILookupUser.cs" />
     <Compile Include="IMessage.cs" />
     <Compile Include="IMilitary.cs" />
     <Compile Include="IOccupation.cs" />
+    <Compile Include="IOffer.cs" />
     <Compile Include="IPersonal.cs" />
     <Compile Include="IPlace.cs" />
     <Compile Include="IPostSource.cs" />
     <Compile Include="IPreview.cs" />
     <Compile Include="IPrice.cs" />
     <Compile Include="IProduct.cs" />
+    <Compile Include="IProfile.cs" />
+    <Compile Include="IChatPushSettings.cs" />
+    <Compile Include="IProfileChangeResponse.cs" />
+    <Compile Include="IPushNotification.cs" />
     <Compile Include="IRelative.cs" />
     <Compile Include="IRepost.cs" />
     <Compile Include="ISchool.cs" />
@@ -105,6 +141,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Errors.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Errors.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

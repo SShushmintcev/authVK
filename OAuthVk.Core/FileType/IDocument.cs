@@ -48,6 +48,5 @@ namespace OAuthVk.Core.FileType
     /// Информация для предварительного просмотра документа.
     /// </summary>
     IPreview Preview { get; }
-
   }
 }

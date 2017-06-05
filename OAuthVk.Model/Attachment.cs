@@ -51,7 +51,7 @@ namespace OAuthVk.Model
     /// <summary>
     /// Объект, представляющий медиавложение - Документ (type = doc).
     /// </summary>
-    [JsonProperty]
+    [JsonProperty("doc")]
     public Document Document { get; set; }
 
     /// <summary>
@@ -64,6 +64,39 @@ namespace OAuthVk.Model
     /// </summary>
     [JsonProperty]
     public Link Link { get; set; }
+
+    /// <summary>
+    /// Объект, представляющий медиавложение - Заметка (type = note).
+    /// </summary>
+    [JsonProperty]
+    public Note Note { get; set; }
+
+    /// <summary>
+    /// Объект, представляющий медиавложение - Заметка (type = note).
+    /// </summary>
+    INote IAttachment.Note => Note;
+
+    /// <summary>
+    /// Объект, представляющий медиавложение - Опрос (type = poll).
+    /// </summary>
+    [JsonProperty]
+    public Poll Poll { get; set; }
+
+    /// <summary>
+    /// Объект, представляющий медиавложение - Опрос (type = poll).
+    /// </summary>
+    IPoll IAttachment.Poll => Poll;
+
+    /// <summary>
+    /// Объект, представляющий медиавложение - Вики-страница (type = page).
+    /// </summary>
+    [JsonProperty]
+    public Page Page { get; set; }
+
+    /// <summary>
+    /// Объект, представляющий медиавложение - Вики-страница (type = page).
+    /// </summary>
+    IPage IAttachment.Page => Page;
 
     /// <summary>
     /// Объект, представляющий медиавложение - Ссылка (type = link).
@@ -84,13 +117,24 @@ namespace OAuthVk.Model
     /// <summary>
     /// Объект, представляющий медиавложение - Подборка товаров (type = market_album).
     /// </summary>
-    [JsonProperty]
+    [JsonProperty("market_album")]
     public MarketAlbum MarketAlbum { get; set; }
 
     /// <summary>
     /// Объект, представляющий медиавложение - Подборка товаров (type = market_album).
     /// </summary>
     IMarketAlbum IAttachment.MarketAlbum => MarketAlbum;
+
+    /// <summary>
+    /// Объект, представляющий медиавложение - Стикер (type = sticker).
+    /// </summary>
+    [JsonProperty]
+    public Sticker Sticker { get; set; }
+
+    /// <summary>
+    /// Объект, представляющий медиавложение - Стикер (type = sticker).
+    /// </summary>
+    ISticker IAttachment.Sticker => Sticker;
 
     /// <summary>
     /// Объект, представляющий медиавложение - Запись на стене (type = wall).
@@ -106,24 +150,13 @@ namespace OAuthVk.Model
     /// <summary>
     /// Объект, представляющий медиавложение - Комментарий на стене (type = wall_reply).
     /// </summary>
-    [JsonProperty]
+    [JsonProperty("wall_reply")]
     public WallReply WallReply { get; set; }
 
     /// <summary>
     /// Объект, представляющий медиавложение - Комментарий на стене (type = wall_reply).
     /// </summary>
     IWallReply IAttachment.WallReply => WallReply;
-
-    /// <summary>
-    /// Объект, представляющий медиавложение - Стикер (type = sticker).
-    /// </summary>
-    [JsonProperty]
-    public Sticker Sticker { get; set; }
-
-    /// <summary>
-    /// Объект, представляющий медиавложение - Стикер (type = sticker).
-    /// </summary>
-    ISticker IAttachment.Sticker => Sticker;
 
     /// <summary>
     /// Объект, представляющий медиавложение - Подарок (type=gift).

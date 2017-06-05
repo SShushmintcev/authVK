@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 using OAuthVk.Core;
 using OAuthVk.Core.Enums;
 using OAuthVk.Core.FileType;
-using OAuthVk.Model.Coverter;
 using OAuthVk.Model.FileType;
 
 namespace OAuthVk.Model
 {
-  [Serializable]
-  public class User : IUser
+  public class User : Profile, IUser
   {
     /// <summary>Initializes a new instance of the <see cref="T:System.Object" /> class.</summary>
     public User()
@@ -26,18 +23,6 @@ namespace OAuthVk.Model
     /// Идентификатор пользователя.
     /// </summary>
     public long Id { get; set; }
-
-    /// <summary>
-    /// Имя.
-    /// </summary>
-    [JsonProperty("first_name")]
-    public string FirstName { get; set; }
-
-    /// <summary>
-    /// Фамилия.
-    /// </summary>
-    [JsonProperty("last_name")]
-    public string LastName { get; set; }
 
     /// <summary>
     /// Поле возвращается, если страница пользователя удалена или заблокирована,
@@ -63,13 +48,6 @@ namespace OAuthVk.Model
     /// Деятельность
     /// </summary>
     public string Activities { get; set; }
-
-    /// <summary>
-    /// Дата рождения.
-    /// Возвращается в формате D.M.YYYY или D.M (если год рождения скрыт). 
-    /// Если дата рождения скрыта целиком, поле отсутствует в ответе.
-    /// </summary>
-    public string Bdate { get; set; }
 
     /// <summary>
     /// Информация о том, находится ли текущий пользователь в черном списке.
@@ -120,36 +98,23 @@ namespace OAuthVk.Model
     /// <summary>
     /// Информация о карьере пользователя.
     /// </summary>
-    IEnumerable<IUserCompany> IUser.Work
-    {
-      get { return Work; }
-    }
-
-    /// <summary>
-    /// Информация о карьере пользователя.
-    /// </summary>
     [JsonProperty("career")]
     public List<UserCompany> Work { get; set; }
 
-    /// <summary>
-    /// Информация о городе, указанном на странице пользователя в разделе «Контакты».
-    /// </summary>
-    [JsonProperty]
-    public City City { get; set; }
+    IEnumerable<IUserCompany> IUser.Work => Work;
 
     /// <summary>
-    /// Информация о городе, указанном на странице пользователя в разделе «Контакты».
+    /// Email, по которому был найден пользователь
+    /// (не приходит если пользователь был найден при предыдущем использовании метода).
     /// </summary>
-    ICity IUser.City
-    {
-      get { return City; }
-    }
+    [JsonProperty("contact")]
+    public string Email { get; set; }
 
     /// <summary>
     /// Количество общих друзей с текущим пользователем.
     /// </summary>
     [JsonProperty("common_count")]
-    public int CommonCount { get; set; }
+    public int? CommonCount { get; set; }
 
     /// <summary>
     /// Возвращает данные об указанных в профиле сервисах пользователя, 
@@ -182,6 +147,12 @@ namespace OAuthVk.Model
     public string Instagram { get; set; }
 
     /// <summary>
+    /// Запрос на добавление в друзья уже был выслан, либо пользователь уже является другом.
+    /// </summary>
+    [JsonProperty("request_sent")]
+    public bool RequestSent { get; set; }
+
+    /// <summary>
     /// Возвращает данные об указанных в профиле сервисах пользователя, 
     /// таких как: skype, facebook, twitter, livejournal, instagram. 
     /// Для каждого сервиса возвращается отдельное поле с типом string,
@@ -195,33 +166,15 @@ namespace OAuthVk.Model
     /// </summary>
     public IContact Contacts { get; set; }
 
+    IContact IUser.Contacts => Contacts;
+
     /// <summary>
     /// Количество различных объектов у пользователя. Возвращается только в методе users.get c передачей access_token. 
     /// </summary>
     [JsonProperty]
     public Counters Counters { get; set; }
 
-    /// <summary>
-    /// Количество различных объектов у пользователя.
-    /// Возвращается только в методе users.get c передачей access_token.
-    /// </summary>
-    ICounters IUser.Counters
-    {
-      get { return Counters; }
-    }
-
-    /// <summary>
-    /// Информация о стране, указанной на странице пользователя в разделе «Контакты».
-    /// </summary>
-    public City Country { get; set; }
-
-    /// <summary>
-    /// Информация о стране, указанной на странице пользователя в разделе «Контакты».
-    /// </summary>
-    ICity IUser.Country
-    {
-      get { return Country; }
-    }
+    ICounters IUser.Counters => Counters;
 
     /// <summary>
     /// Возвращает данные о точках, по которым вырезаны профильная и миниатюрная фотографии пользователя.
@@ -229,13 +182,7 @@ namespace OAuthVk.Model
     [JsonProperty("crop_photo")]
     public Crop CropPhoto { get; set; }
 
-    /// <summary>
-    /// Возвращает данные о точках, по которым вырезаны профильная и миниатюрная фотографии пользователя.
-    /// </summary>
-    ICrop IUser.CropPhoto
-    {
-      get { return CropPhoto; }
-    }
+    ICrop IUser.CropPhoto => CropPhoto;
 
     /// <summary>
     /// Короткий адрес страницы.
@@ -304,21 +251,13 @@ namespace OAuthVk.Model
     /// Информация о том, известен ли номер мобильного телефона пользователя.
     /// </summary>
     [JsonProperty("has_mobile")]
-    [JsonConverter(typeof(BoolConverterAttribute))]
     public bool HasMobile { get; set; }
 
     /// <summary>
     /// Информация о том, установил ли пользователь фотографию для профиля.
     /// </summary>
     [JsonProperty("has_photo")]
-    [JsonConverter(typeof(BoolConverterAttribute))]
     public bool HasPhoto { get; set; }
-
-    /// <summary>
-    /// Название родного города.
-    /// </summary>
-    [JsonProperty("home_town")]
-    public string Hometown { get; set; }
 
     /// <summary>
     /// Содержимое поля «Интересы» из профиля.
@@ -329,22 +268,26 @@ namespace OAuthVk.Model
     /// Информация о том, есть ли пользователь в закладках у текущего пользователя.
     /// </summary>
     [JsonProperty("is_favorite")]
-    [JsonConverter(typeof(BoolConverterAttribute))]
     public bool IsFavorite { get; set; }
 
     /// <summary>
     /// Информация о том, является ли пользователь другом текущего пользователя.
     /// </summary>
     [JsonProperty("is_friend")]
-    [JsonConverter(typeof(BoolConverterAttribute))]
     public bool IsFriend { get; set; }
 
     /// <summary>
     /// Информация о том, скрыт ли пользователь из ленты новостей текущего пользователя.
     /// </summary>
     [JsonProperty("is_hidden_from_feed")]
-    [JsonConverter(typeof(BoolConverterAttribute))]
     public bool IsHiddenFromFeed { get; set; }
+
+    /// <summary>
+    /// Идентификатор пользователя, пригласившего в беседу.
+    /// </summary>
+    /// <remarks>Опционально. Используется, когда получаем данные беседы.</remarks>
+    [JsonProperty("invited_by")]
+    public int? InvitedBy { get; set; }
 
     /// <summary>
     /// Время последнего посещения.
@@ -352,36 +295,18 @@ namespace OAuthVk.Model
     [JsonProperty("last_seen")]
     public LastVisit LastSeen { get; set; }
 
-    /// <summary>
-    /// Время последнего посещения.
-    /// </summary>
-    ILastVisit IUser.LastSeen
-    {
-      get { return LastSeen; }
-    }
+    ILastVisit IUser.LastSeen => LastSeen;
 
     /// <summary>
     /// Разделенные запятой идентификаторы списков друзей, в которых состоит пользователь.
     /// </summary>
     public List<int> Lists { get; set; }
 
-    /// <summary>
-    /// Разделенные запятой идентификаторы списков друзей, в которых состоит пользователь.
-    /// </summary>
-    IEnumerable<int> IUser.Lists
-    {
-      get { return Lists; }
-    }
+    IEnumerable<int> IUser.Lists => Lists;
 
     #endregion
 
     #region Optional------- M-W
-
-    /// <summary>
-    /// Девичья фамилия.
-    /// </summary>
-    [JsonProperty("maiden_name")]
-    public string MaidenName { get; set; }
 
     /// <summary>
     /// Информация о военной службе пользователя.
@@ -389,13 +314,7 @@ namespace OAuthVk.Model
     [JsonProperty]
     public Military Military { get; set; }
 
-    /// <summary>
-    /// Информация о военной службе пользователя.
-    /// </summary>
-    IMilitary IUser.Military
-    {
-      get { return Military; }
-    }
+    IMilitary IUser.Military => Military;
 
     /// <summary>
     /// Содержимое поля «Любимые фильмы» из профиля пользователя.
@@ -418,13 +337,7 @@ namespace OAuthVk.Model
     [JsonProperty]
     public Occupation Occupation { get; set; }
 
-    /// <summary>
-    /// Информация о текущем роде занятия пользователя.
-    /// </summary>
-    IOccupation IUser.Occupation
-    {
-      get { return Occupation; }
-    }
+    IOccupation IUser.Occupation => Occupation;
 
     /// <summary>
     /// Информация о том, находится ли пользователь сейчас на сайте.
@@ -434,7 +347,6 @@ namespace OAuthVk.Model
     /// содержащее 1. При этом, если используется именно приложение, дополнительно 
     /// возвращается поле online_app, содержащее его идентификатор.</remarks>
     /// TODO:
-    [JsonConverter(typeof(BoolConverterAttribute))]
     public bool Online { get; set; }
 
     /// <summary>
@@ -443,13 +355,7 @@ namespace OAuthVk.Model
     [JsonProperty]
     public Personal Personal { get; set; }
 
-    /// <summary>
-    /// Информация о полях из раздела «Жизненная позиция».
-    /// </summary>
-    IPersonal IUser.Personal
-    {
-      get { return Personal; }
-    }
+    IPersonal IUser.Personal => Personal;
 
     /// <summary>
     /// Url квадратной фотографии пользователя, имеющей ширину 50 пикселей.
@@ -520,22 +426,7 @@ namespace OAuthVk.Model
     [JsonProperty]
     public List<Relative> Relatives { get; set; }
 
-    /// <summary>
-    /// Список родственников текущего пользователя.
-    /// </summary>
-    IEnumerable<IRelative> IUser.Relatives
-    {
-      get { return Relatives; }
-    }
-
-    /// <summary>
-    /// Семейное положение пользователя.
-    /// </summary>
-    /// <remarks>Если в семейном положении указан другой пользователь, 
-    /// дополнительно возвращается объект relation_partner, содержащий id и имя этого человека.</remarks>
-    /// TODO:
-    [JsonProperty("relation")]
-    public UserRelationType MaritalType { get; set; }
+    IEnumerable<IRelative> IUser.Relatives => Relatives;
 
     /// <summary>
     /// Список школ, в которых учился пользователь.
@@ -543,38 +434,12 @@ namespace OAuthVk.Model
     [JsonProperty]
     public List<School> Schools { get; set; }
 
-    /// <summary>
-    /// Список школ, в которых учился пользователь.
-    /// </summary>
-    IEnumerable<ISchool> IUser.Schools
-    {
-      get { return Schools; }
-    }
-
-    /// <summary>
-    /// Короткое имя страницы пользователя.
-    /// </summary>
-    [JsonProperty("screen_name")]
-    public string ScreenName { get; set; }
-
-    /// <summary>
-    /// Пол пользователя. 
-    /// </summary>
-    public SexType Sex { get; set; }
+    IEnumerable<ISchool> IUser.Schools => Schools;
 
     /// <summary>
     /// Адрес сайта, указанный в профиле сайт пользователя.
     /// </summary>
     public string Site { get; set; }
-
-    /// <summary>
-    /// Статус пользователя.
-    /// Возвращается строка, содержащая текст статуса, расположенного в профиле под именем пользователя.
-    /// </summary>
-    /// <remarks>Если у пользователя включена опция «Транслировать в статус играющую музыку», 
-    /// будет возвращено дополнительное поле status_audio, содержащее информацию о транслируемой композиции. </remarks>
-    /// TODO: 
-    public string Status { get; set; }
 
     /// <summary>
     /// Временная зона пользователя.
@@ -593,25 +458,17 @@ namespace OAuthVk.Model
     [JsonProperty]
     public List<University> Universities { get; set; }
 
-    /// <summary>
-    /// список вузов, в которых учился пользователь.
-    /// </summary>
-    IEnumerable<IUniversity> IUser.Universities
-    {
-      get { return Universities; }
-    }
+    IEnumerable<IUniversity> IUser.Universities => Universities;
 
     /// <summary>
     /// Признак верификации страницы пользователя.
     /// </summary>
-    [JsonConverter(typeof(BoolConverterAttribute))]
     public bool Verified { get; set; }
 
     /// <summary>
     /// Признак включенности комментариев на стене.
     /// </summary>
     [JsonProperty("wall_comments")]
-    [JsonConverter(typeof(BoolConverterAttribute))]
     public bool WallComments { get; set; }
 
     #endregion

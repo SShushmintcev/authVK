@@ -35,6 +35,21 @@ namespace OAuthVk.Core
     ILink Link { get; }
 
     /// <summary>
+    /// Объект, представляющий медиавложение - Заметка (type = note).
+    /// </summary>
+    INote Note { get; }
+
+    /// <summary>
+    /// Объект, представляющий медиавложение - Опрос (type = poll).
+    /// </summary>
+    IPoll Poll { get; }
+
+    /// <summary>
+    /// Объект, представляющий медиавложение - Вики-страница (type = page).
+    /// </summary>
+    IPage Page { get; }
+
+    /// <summary>
     /// Объект, представляющий медиавложение - Товар (type = market).
     /// </summary>
     IMarket Market { get; }
@@ -45,6 +60,11 @@ namespace OAuthVk.Core
     IMarketAlbum MarketAlbum { get; }
 
     /// <summary>
+    /// Объект, представляющий медиавложение - Стикер (type = sticker).
+    /// </summary>
+    ISticker Sticker { get; }
+
+    /// <summary>
     /// Объект, представляющий медиавложение - Запись на стене (type = wall).
     /// </summary>
     IWall Wall { get; }
@@ -53,11 +73,6 @@ namespace OAuthVk.Core
     /// Объект, представляющий медиавложение - Комментарий на стене (type = wall_reply).
     /// </summary>
     IWallReply WallReply { get; }
-
-    /// <summary>
-    /// Объект, представляющий медиавложение - Стикер (type = sticker).
-    /// </summary>
-    ISticker Sticker { get; }
 
     /// <summary>
     /// Объект, представляющий медиавложение - Подарок (type=gift).

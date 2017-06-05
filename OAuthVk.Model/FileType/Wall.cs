@@ -13,7 +13,6 @@ namespace OAuthVk.Model.FileType
     public Wall()
     {
       Attachments = new List<Attachment>();
-      PostSource = new List<PostSource>();
     }
 
     /// <summary>
@@ -124,13 +123,13 @@ namespace OAuthVk.Model.FileType
     /// Информация о способе размещения записи.
     /// </summary>
     [JsonProperty("post_source")]
-    public List<PostSource> PostSource { get; set; }
+    public PostSource PostSource { get; set; }
 
     /// <summary>
     /// Поле возвращается только для Standalone-приложений с ключом доступа, полученным в Implicit Flow.
     /// Информация о способе размещения записи.
     /// </summary>
-    IEnumerable<IPostSource> IWall.PostSource => PostSource;
+    IPostSource IWall.PostSource => PostSource;
 
     /// <summary>
     /// Медиавложения записи (фотографии, ссылки и т.п.).
