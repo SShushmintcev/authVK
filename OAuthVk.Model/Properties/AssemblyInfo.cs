@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("OAuthVk.Model")]
-[assembly: AssemblyCopyright("Copyright © Svyatoslav Shushmintsev 2017")]
+[assembly: AssemblyCopyright("Copyright © Svyatoslav Shushmintsev 2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
